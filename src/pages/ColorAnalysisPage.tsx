@@ -14,10 +14,9 @@ export default function ColorAnalysisPage() {
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoContainerRef = useRef<HTMLDivElement>(null);
+  const streamRef = useRef<MediaStream | null>(null); 
 
-  const startCamera = async () => { /* ...same as before */ };
-  const stopCamera = () => { /* ...same as before */ };
-  const toggleCamera = () => cameraActive ? stopCamera() : startCamera();
+
   const goToSlide = (index: number) => setCurrentIndex(Math.max(0, Math.min(index, color_palettes.length - 1)));
 
   const handleColorDragStart = (e: React.DragEvent<HTMLDivElement>, color: Color) => {
@@ -28,6 +27,37 @@ export default function ColorAnalysisPage() {
   const removeDroppedColor = (id: number) => setDroppedColors(droppedColors.filter(c => c.id !== id));
   const clearAllColors = () => setDroppedColors([]);
   
+    const startCamera = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } });
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+        streamRef.current = stream;
+        setCameraActive(true);
+      }
+    } catch (err) {
+      alert('Unable to access camera. Please ensure you have granted camera permissions.');
+      console.error('Camera error:', err);
+    }
+  };
+
+  const stopCamera = () => {
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach(track => track.stop());
+      if (videoRef.current) {
+        videoRef.current.srcObject = null;
+      }
+      streamRef.current = null;
+      setCameraActive(false);
+    }
+  };
+
+  const toggleCamera = () => {
+    if (cameraActive) stopCamera();
+    else startCamera();
+  };
+
+
   useEffect(() => { return () => stopCamera(); }, []);
 
   return (
