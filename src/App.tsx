@@ -1,10 +1,10 @@
-import ColorAnalysisApp from "./pages/ColorAnalysisPage";
+import ColorAnalysisPage from "./pages/ColorAnalysisPage";
 
 const App = () => {
 
   return (
-    <div className="App">
-      <ColorAnalysisApp/>
+    <div>
+      <ColorAnalysisPage/>
     </div>
   );
 };
