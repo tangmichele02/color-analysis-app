@@ -3,7 +3,6 @@ export const color_palettes: Palette[] = [
   {
     name: "Spring",
     description: "Warm, clear, and bright—like flowers in bloom",
-    dominantColor: "rgba(255, 182, 128, 0.3)",
     colors: [
       { hex: "#FFE5B4", name: "Peach" },
       { hex: "#FFB6C1", name: "Light Coral" },
@@ -18,7 +17,6 @@ export const color_palettes: Palette[] = [
   {
     name: "Summer",
     description: "Cool, soft, and muted—like a morning mist",
-    dominantColor: "rgba(176, 196, 222, 0.3)",
     colors: [
       { hex: "#B0C4DE", name: "Powder Blue" },
       { hex: "#DDA0DD", name: "Plum" },
@@ -33,7 +31,6 @@ export const color_palettes: Palette[] = [
   {
     name: "Autumn",
     description: "Warm, rich, and earthy—like falling leaves",
-    dominantColor: "rgba(184, 115, 51, 0.3)",
     colors: [
       { hex: "#D2691E", name: "Rust" },
       { hex: "#8B4513", name: "Saddle Brown" },
@@ -48,7 +45,6 @@ export const color_palettes: Palette[] = [
   {
     name: "Winter",
     description: "Cool, clear, and high-contrast—like ice and jewels",
-    dominantColor: "rgba(70, 130, 180, 0.3)",
     colors: [
       { hex: "#000000", name: "True Black" },
       { hex: "#FFFFFF", name: "Pure White" },

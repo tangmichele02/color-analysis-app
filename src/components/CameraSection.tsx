@@ -3,26 +3,22 @@ import type { DraggedColor, Color } from '../types/palette';
 import { DroppedColor } from './DroppedColor';
 
 interface CameraSectionProps {
-  cameraActive: boolean;
   droppedColors: DraggedColor[];
   onDropColor: (color: Color, x: number, y: number) => void;
   removeDroppedColor: (id: number) => void;
   videoRef: React.RefObject<HTMLVideoElement | null>;
   videoContainerRef: React.RefObject<HTMLDivElement | null>;
-  dominantColor: string;
   isDragOver: boolean;
   setIsDragOver: (value: boolean) => void;
   handleColorDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
 }
 
 export function CameraSection({
-  cameraActive,
   droppedColors,
   onDropColor,
   removeDroppedColor,
   videoRef,
   videoContainerRef,
-  dominantColor,
   isDragOver,
   setIsDragOver,
   handleColorDragOver
@@ -63,14 +59,6 @@ export function CameraSection({
         playsInline
         muted
       />
-
-      {/* Dominant color overlay */}
-      <div className={`absolute inset-0 pointer-events-none transition-opacity duration-400 ${cameraActive ? 'opacity-100' : 'opacity-0'}`}>
-        <div
-          className="absolute inset-0 mix-blend-multiply transition-colors duration-600"
-          style={{ backgroundColor: dominantColor }}
-        />
-      </div>
 
       {/* Dropped colors */}
       <div className="absolute inset-0 z-10">

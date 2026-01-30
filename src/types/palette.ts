@@ -6,7 +6,6 @@ export interface Color {
 export interface Palette {
   name: string;
   description: string;
-  dominantColor: string;
   colors: Color[];
 }
 

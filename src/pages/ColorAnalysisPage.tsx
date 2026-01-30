@@ -78,7 +78,6 @@ export default function ColorAnalysisPage() {
       <main className="flex-1 flex flex-col px-4 md:px-8 py-8 max-w-[1600px] mx-auto w-full space-y-8">
         {/* Camera Section */}
         <CameraSection
-          cameraActive={cameraActive}
           droppedColors={droppedColors}
           onDropColor={(color, x, y) => {
             setDroppedColors([...droppedColors, { color, x, y, id: nextColorId }]);
@@ -87,7 +86,6 @@ export default function ColorAnalysisPage() {
           removeDroppedColor={removeDroppedColor}
           videoRef={videoRef}
           videoContainerRef={videoContainerRef}
-          dominantColor={color_palettes[currentIndex].dominantColor}
           isDragOver={isDragOver}
           setIsDragOver={setIsDragOver}
           handleColorDragOver={(e) => e.preventDefault()}
